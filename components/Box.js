@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
+let turn = 'Player 1';
+
 export default function Box() {
-    const [content, setContent] = useState("O")
+    const [content, setContent] = useState("");
+    const placeSign = () => {
+        if (turn == "Player 1") {
+            setContent("O");
+            turn = "Player 2";
+        } else if (turn == "Player 2") {
+            setContent("X");
+            turn = "Player 1";
+        }
+    };
 
     return (
-        <TouchableOpacity onPress={
-            () => {
-                setContent(content == "O" ? "X" : "O")
-            }
-        } style={styles.box}>
+        <TouchableOpacity disabled={content ? true : false} onPress={placeSign} style={styles.box}>
             <Text style={styles.text}>{content}</Text>
         </TouchableOpacity>
     );

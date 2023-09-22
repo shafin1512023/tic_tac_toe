@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { StyleSheet, View } from "react-native";
 import Box, { color } from "./Box";
 
